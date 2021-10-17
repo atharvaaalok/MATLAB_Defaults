@@ -1,0 +1,5 @@
+Add this folder to path in MATLAB. To do this follow the given steps:
+
+Open MATLAB -> Home -> Set Path -> Add with Subfolders -> Choose the above folder 'PlottingTemplates'
+
+You are ready to go!
