@@ -60,7 +60,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.XLabel.Interpreter = 'latex';
             ax.YLabel.Interpreter = 'latex';
             ax.ZLabel.Interpreter = 'latex';
-
+            
 
             %========================================================
             % SET PROPERTIES FOR TITLE
@@ -79,9 +79,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 ax.Legend.FontSize = PS.save_big_LegendFontSize;
                 ax.Legend.Interpreter = 'latex';
                 ax.Legend.Box = 'on';
-                ax.Legend.LineWidth = PS.DefaultLegendBoxLineWidth;
+                ax.Legend.LineWidth = PS.save_big_DefaultLegendBoxLineWidth;
                 ax.Legend.AutoUpdate = 'off';
-                ax.Legend.Location = PS.DefaultLegendLocation;
+                if (isfield(fig_comps, 'legendPosition'))
+                ax.Legend.Position = fig_comps.legendPosition;
+                end
             end
 
 
@@ -92,7 +94,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             for i = 1:length(axisChildren)
                 if isequal(axisChildren(i).Type, 'text')
                     axisChildren(i).FontName = PS.PlotTextFont;
-                    axisChildren(i).FontSize = PS.save_big_PlotTextFontSize;
+                    % axisChildren(i).FontSize = PS.save_big_PlotTextFontSize;
                     axisChildren(i).Interpreter = 'latex';
                 end
             end
@@ -110,7 +112,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.XColor = PS.AxisColor;
             ax.YColor = PS.AxisColor;
             ax.ZColor = PS.AxisColor;
-            ax.LineWidth = PS.DefaultLineWidth;
+            ax.XLabel.Color = PS.AxisLabelColor;
+            ax.YLabel.Color = PS.AxisLabelColor;
+            ax.ZLabel.Color = PS.AxisLabelColor;
+            ax.LineWidth = PS.save_big_DefaultLineWidth;
+            
 
         % If to save in 'small' mode
         elseif isequal(save_format, 'small')
@@ -171,9 +177,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 ax.Legend.FontSize = PS.save_small_LegendFontSize;
                 ax.Legend.Interpreter = 'latex';
                 ax.Legend.Box = 'on';
-                ax.Legend.LineWidth = PS.DefaultLegendBoxLineWidth;
+                ax.Legend.LineWidth = PS.save_small_DefaultLegendBoxLineWidth;
                 ax.Legend.AutoUpdate = 'off';
-                ax.Legend.Location = PS.DefaultLegendLocation;
+                if (isfield(fig_comps, 'legendPosition'))
+                ax.Legend.Position = fig_comps.legendPosition;
+                end
             end
 
 
@@ -184,7 +192,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             for i = 1:length(axisChildren)
                 if isequal(axisChildren(i).Type, 'text')
                     axisChildren(i).FontName = PS.PlotTextFont;
-                    axisChildren(i).FontSize = PS.save_small_PlotTextFontSize;
+                    % axisChildren(i).FontSize = PS.save_small_PlotTextFontSize;
                     axisChildren(i).Interpreter = 'latex';
                 end
             end
@@ -202,7 +210,10 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.XColor = PS.AxisColor;
             ax.YColor = PS.AxisColor;
             ax.ZColor = PS.AxisColor;
-            ax.LineWidth = PS.DefaultLineWidth;
+            ax.XLabel.Color = PS.AxisLabelColor;
+            ax.YLabel.Color = PS.AxisLabelColor;
+            ax.ZLabel.Color = PS.AxisLabelColor;
+            ax.LineWidth = PS.save_small_DefaultLineWidth;
 
         end
         
@@ -232,7 +243,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             %========================================================
             % TILE GLOBAL PROPERTIES
 
-            t1.Padding = 'loose';
+            % t1.Padding = 'tight';
 
             t1.Title.FontName = PS.TitleFont;
             t1.Title.FontSize = PS.Tiled.Global.save_big_TitleFontSize;
@@ -299,7 +310,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                     n_i.Legend.FontSize = PS.Tiled.SubPlot.save_big_LegendFontSize;
                     n_i.Legend.Interpreter = 'latex';
                     n_i.Legend.Box = 'on';
-                    n_i.Legend.LineWidth = PS.DefaultLegendBoxLineWidth;
+                    n_i.Legend.LineWidth = PS.Tiled.SubPlot.save_big_DefaultLegendBoxLineWidth;
                     n_i.Legend.AutoUpdate = 'off';
                     n_i.Legend.Location = PS.DefaultLegendLocation;
                 end
@@ -312,7 +323,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 for j = 1:length(axisChildren)
                     if isequal(axisChildren(j).Type, 'text')
                         axisChildren(j).FontName = PS.PlotTextFont;
-                        axisChildren(j).FontSize = PS.Tiled.SubPlot.save_big_PlotTextFontSize;
+                        % axisChildren(j).FontSize = PS.Tiled.SubPlot.save_big_PlotTextFontSize;
                         axisChildren(j).Interpreter = 'latex';
                     end
                 end
@@ -330,7 +341,10 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 n_i.XColor = PS.AxisColor;
                 n_i.YColor = PS.AxisColor;
                 n_i.ZColor = PS.AxisColor;
-                n_i.LineWidth = PS.DefaultLineWidth;
+                n_i.XLabel.Color = PS.AxisLabelColor;
+                n_i.YLabel.Color = PS.AxisLabelColor;
+                n_i.ZLabel.Color = PS.AxisLabelColor;
+                n_i.LineWidth = PS.Tiled.SubPlot.save_big_DefaultLineWidth;
 
             end
 
@@ -357,7 +371,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             %========================================================
             % TILE GLOBAL PROPERTIES
 
-            t1.Padding = 'loose';
+            % t1.Padding = 'tight';
 
             t1.Title.FontName = PS.TitleFont;
             t1.Title.FontSize = PS.Tiled.Global.save_small_TitleFontSize;
@@ -424,7 +438,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                     n_i.Legend.FontSize = PS.Tiled.SubPlot.save_small_LegendFontSize;
                     n_i.Legend.Interpreter = 'latex';
                     n_i.Legend.Box = 'on';
-                    n_i.Legend.LineWidth = PS.DefaultLegendBoxLineWidth;
+                    n_i.Legend.LineWidth = PS.Tiled.SubPlot.save_small_DefaultLegendBoxLineWidth;
                     n_i.Legend.AutoUpdate = 'off';
                     n_i.Legend.Location = PS.DefaultLegendLocation;
                 end
@@ -437,7 +451,7 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 for j = 1:length(axisChildren)
                     if isequal(axisChildren(j).Type, 'text')
                         axisChildren(j).FontName = PS.PlotTextFont;
-                        axisChildren(j).FontSize = PS.Tiled.SubPlot.save_small_PlotTextFontSize;
+                        % axisChildren(j).FontSize = PS.Tiled.SubPlot.save_small_PlotTextFontSize;
                         axisChildren(j).Interpreter = 'latex';
                     end
                 end
@@ -455,7 +469,10 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 n_i.XColor = PS.AxisColor;
                 n_i.YColor = PS.AxisColor;
                 n_i.ZColor = PS.AxisColor;
-                n_i.LineWidth = PS.DefaultLineWidth;
+                n_i.XLabel.Color = PS.AxisLabelColor;
+                n_i.YLabel.Color = PS.AxisLabelColor;
+                n_i.ZLabel.Color = PS.AxisLabelColor;
+                n_i.LineWidth = PS.Tiled.SubPlot.save_small_DefaultLineWidth;
 
             end
 

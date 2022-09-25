@@ -52,10 +52,22 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
         ax.XLabel.FontWeight = 'bold';
         ax.YLabel.FontWeight = 'bold';
         ax.ZLabel.FontWeight = 'bold';
-
-        ax.XLabel.Interpreter = 'latex';
-        ax.YLabel.Interpreter = 'latex';
-        ax.ZLabel.Interpreter = 'latex';
+        
+        if length(ax.XLabel.String) > 4
+            if all(ax.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                ax.XLabel.Interpreter = 'latex';
+            end
+        end
+        if length(ax.YLabel.String) > 4
+            if all(ax.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                ax.YLabel.Interpreter = 'latex';
+            end
+        end
+        if length(ax.ZLabel.String) > 4
+            if all(ax.ZLabel.String([1, 2, end - 1, end]) == '$$$$')
+                ax.ZLabel.Interpreter = 'latex';
+            end
+        end
 
 
         %========================================================
@@ -64,7 +76,11 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
         ax.Title.FontName = PS.TitleFont;
         ax.Title.FontSize = PS.TitleFontSize;
         ax.Title.FontWeight = 'bold';
-        ax.Title.Interpreter = 'latex';
+        if length(ax.Title.String) > 4
+            if all(ax.Title.String([1, 2, end - 1, end]) == '$$$$')
+                ax.Title.Interpreter = 'latex';
+            end
+        end
 
 
         %========================================================
@@ -73,11 +89,20 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
         if (numel(ax.Legend) ~= 0)
             ax.Legend.FontName = PS.LegendFont;
             ax.Legend.FontSize = PS.LegendFontSize;
-            ax.Legend.Interpreter = 'latex';
+            for i_Legend = 1: length(ax.Legend.String)
+                if length(ax.Legend.String{i_Legend}) > 4
+                    if all(ax.Legend.String{i_Legend}([1, 2, end - 1, end]) == '$$$$')
+                        ax.Legend.Interpreter = 'latex';
+                        break
+                    end
+                end
+            end
             ax.Legend.Box = 'on';
             ax.Legend.LineWidth = PS.DefaultLegendBoxLineWidth;
             ax.Legend.AutoUpdate = 'off';
-            ax.Legend.Location = PS.DefaultLegendLocation;
+            if (isfield(fig_comps, 'legendPosition'))
+                ax.Legend.Position = fig_comps.legendPosition;
+            end
         end
 
 
@@ -89,14 +114,18 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
             if isequal(axisChildren(i).Type, 'text')
                 axisChildren(i).FontName = PS.PlotTextFont;
                 axisChildren(i).FontSize = PS.PlotTextFontSize;
-                axisChildren(i).Interpreter = 'latex';
+                if length(ax.axisChildren(i).String) > 4
+                    if all(ax.axisChildren(i).String([1, 2, end - 1, end]) == '$$$$')
+                        ax.axisChildren(i).Interpreter = 'latex';
+                    end
+                end
             end
         end
 
 
         %========================================================
         % ADJUST AXES PROPERTIES
-
+        
         ax.Box = 'on';
         ax.TickDir = 'out';
         ax.TickLength = [PS.AxisTickLength, PS.AxisTickLength];
@@ -106,7 +135,11 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
         ax.XColor = PS.AxisColor;
         ax.YColor = PS.AxisColor;
         ax.ZColor = PS.AxisColor;
+        ax.XLabel.Color = PS.AxisLabelColor;
+        ax.YLabel.Color = PS.AxisLabelColor;
+        ax.ZLabel.Color = PS.AxisLabelColor;
         ax.LineWidth = PS.DefaultLineWidth;
+
     
     % Tiled Plot
     elseif numel(findobj(gcf, 'type', 'tile')) == 1
@@ -230,7 +263,11 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
             n_i.XColor = PS.AxisColor;
             n_i.YColor = PS.AxisColor;
             n_i.ZColor = PS.AxisColor;
+            n_i.XLabel.Color = PS.AxisLabelColor;
+            n_i.YLabel.Color = PS.AxisLabelColor;
+            n_i.ZLabel.Color = PS.AxisLabelColor;
             n_i.LineWidth = PS.DefaultLineWidth;
+            
 
         end
         

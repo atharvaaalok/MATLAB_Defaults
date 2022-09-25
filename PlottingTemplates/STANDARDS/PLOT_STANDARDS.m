@@ -10,14 +10,21 @@ function PS = PLOT_STANDARDS()
     % FONTS
 
     % My STANDARD Font for Plots
+    % To check which fonts are available use - 
 
-
-    PS.DefaultFont = 'Yu Mincho';
-    PS.AxisNumbersFontName = 'Yu Mincho';
-    PS.AxisFont = 'Yu Mincho';
-    PS.LegendFont = 'Yu Mincho';
-    PS.TitleFont = 'Yu Mincho';
-    PS.PlotTextFont = 'Yu Mincho';
+    PS.DefaultFont = 'Nunito';
+    PS.AxisNumbersFontName = 'Nunito';
+    PS.AxisFont = 'Nunito';
+    PS.LegendFont = 'Nunito';
+    PS.TitleFont = 'Nunito';
+    PS.PlotTextFont = 'Nunito';
+    
+%     PS.DefaultFont = 'Yu Mincho';
+%     PS.AxisNumbersFontName = 'Yu Mincho';
+%     PS.AxisFont = 'Yu Mincho';
+%     PS.LegendFont = 'Yu Mincho';
+%     PS.TitleFont = 'Yu Mincho';
+%     PS.PlotTextFont = 'Yu Mincho';
 
     PS.TitleFontSize = 28;
     PS.LegendFontSize = 20;
@@ -151,7 +158,7 @@ function PS = PLOT_STANDARDS()
     PS.Purple3 = [40, 55, 71]./255;
     PS.Purple4 = [28, 40, 51]./255;
     PS.Purple5 = [23, 32, 42]./255;
-      
+   
     
     %========================================================
     % LINE AND MARKER PROPERTIES
@@ -177,7 +184,8 @@ function PS = PLOT_STANDARDS()
     % AXIS DETAILS
     
     PS.AxisTickLength = 0.01;
-    PS.AxisColor = PS.Grey5;
+    PS.AxisColor = PS.DGrey5;
+    PS.AxisLabelColor = PS.MyBlack;
 
 
     %========================================================
@@ -189,14 +197,18 @@ function PS = PLOT_STANDARDS()
     PS.save_big_AxisFontSize = 24;
     PS.save_big_PlotTextFontSize = 20;
     PS.save_big_AxisNumbersFontSize = 18;
+    PS.save_big_DefaultLineWidth = 1.5;
+    PS.save_big_DefaultLegendBoxLineWidth = 1.5;
 
 
     % Small
-    PS.save_small_TitleFontSize = 18;
+    PS.save_small_TitleFontSize = 15;
     PS.save_small_LegendFontSize = 7;
-    PS.save_small_AxisFontSize = 14;
+    PS.save_small_AxisFontSize = 11;
     PS.save_small_PlotTextFontSize = 10;
-    PS.save_small_AxisNumbersFontSize = 8;
+    PS.save_small_AxisNumbersFontSize = 10;
+    PS.save_small_DefaultLineWidth = 1;
+    PS.save_small_DefaultLegendBoxLineWidth = .7;
     
    
     % TILED SAVE
@@ -210,6 +222,9 @@ function PS = PLOT_STANDARDS()
     PS.Tiled.SubPlot.save_big_AxisFontSize = 22;
     PS.Tiled.SubPlot.save_big_PlotTextFontSize = 18;
     PS.Tiled.SubPlot.save_big_AxisNumbersFontSize = 16;
+    
+    PS.Tiled.SubPlot.save_big_DefaultLineWidth = 1.5;
+    PS.Tiled.SubPlot.save_big_DefaultLegendBoxLineWidth = 1.5;
 
 
     % Small
@@ -221,6 +236,9 @@ function PS = PLOT_STANDARDS()
     PS.Tiled.SubPlot.save_small_AxisFontSize = 8;
     PS.Tiled.SubPlot.save_small_PlotTextFontSize = 6;
     PS.Tiled.SubPlot.save_small_AxisNumbersFontSize = 6;
+    
+    PS.Tiled.SubPlot.save_small_DefaultLineWidth = 1;
+    PS.Tiled.SubPlot.save_small_DefaultLegendBoxLineWidth = 1;
 
     
     
