@@ -57,9 +57,21 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.YLabel.FontWeight = 'bold';
             ax.ZLabel.FontWeight = 'bold';
 
-            ax.XLabel.Interpreter = 'latex';
-            ax.YLabel.Interpreter = 'latex';
-            ax.ZLabel.Interpreter = 'latex';
+            if length(ax.XLabel.String) > 4
+                if all(ax.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.XLabel.Interpreter = 'latex';
+                end
+            end
+            if length(ax.YLabel.String) > 4
+                if all(ax.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.YLabel.Interpreter = 'latex';
+                end
+            end
+            if length(ax.ZLabel.String) > 4
+                if all(ax.ZLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.ZLabel.Interpreter = 'latex';
+                end
+            end
             
 
             %========================================================
@@ -68,7 +80,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.Title.FontName = PS.TitleFont;
             ax.Title.FontSize = PS.save_big_TitleFontSize;
             ax.Title.FontWeight = 'bold';
-            ax.Title.Interpreter = 'latex';
+            if length(ax.Title.String) > 4
+                if all(ax.Title.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.Title.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -77,7 +93,14 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             if (numel(ax.Legend) ~= 0)
                 ax.Legend.FontName = PS.LegendFont;
                 ax.Legend.FontSize = PS.save_big_LegendFontSize;
-                ax.Legend.Interpreter = 'latex';
+                for i_Legend = 1: length(ax.Legend.String)
+                    if length(ax.Legend.String{i_Legend}) > 4
+                        if all(ax.Legend.String{i_Legend}([1, 2, end - 1, end]) == '$$$$')
+                            ax.Legend.Interpreter = 'latex';
+                            break
+                        end
+                    end
+                end
                 ax.Legend.Box = 'on';
                 ax.Legend.LineWidth = PS.save_big_DefaultLegendBoxLineWidth;
                 ax.Legend.AutoUpdate = 'off';
@@ -95,7 +118,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 if isequal(axisChildren(i).Type, 'text')
                     axisChildren(i).FontName = PS.PlotTextFont;
                     % axisChildren(i).FontSize = PS.save_big_PlotTextFontSize;
-                    axisChildren(i).Interpreter = 'latex';
+                    if length(axisChildren(i).String) > 4
+                        if all(axisChildren(i).String([1, 2, end - 1, end]) == '$$$$')
+                            axisChildren(i).Interpreter = 'latex';
+                        end
+                    end
                 end
             end
 
@@ -155,9 +182,21 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.YLabel.FontWeight = 'bold';
             ax.ZLabel.FontWeight = 'bold';
 
-            ax.XLabel.Interpreter = 'latex';
-            ax.YLabel.Interpreter = 'latex';
-            ax.ZLabel.Interpreter = 'latex';
+            if length(ax.XLabel.String) > 4
+                if all(ax.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.XLabel.Interpreter = 'latex';
+                end
+            end
+            if length(ax.YLabel.String) > 4
+                if all(ax.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.YLabel.Interpreter = 'latex';
+                end
+            end
+            if length(ax.ZLabel.String) > 4
+                if all(ax.ZLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.ZLabel.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -166,7 +205,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             ax.Title.FontName = PS.TitleFont;
             ax.Title.FontSize = PS.save_small_TitleFontSize;
             ax.Title.FontWeight = 'bold';
-            ax.Title.Interpreter = 'latex';
+            if length(ax.Title.String) > 4
+                if all(ax.Title.String([1, 2, end - 1, end]) == '$$$$')
+                    ax.Title.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -175,8 +218,15 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             if (numel(ax.Legend) ~= 0)
                 ax.Legend.FontName = PS.LegendFont;
                 ax.Legend.FontSize = PS.save_small_LegendFontSize;
-                ax.Legend.Interpreter = 'latex';
-                ax.Legend.Box = 'on';
+                for i_Legend = 1: length(ax.Legend.String)
+                    if length(ax.Legend.String{i_Legend}) > 4
+                        if all(ax.Legend.String{i_Legend}([1, 2, end - 1, end]) == '$$$$')
+                            ax.Legend.Interpreter = 'latex';
+                            break
+                        end
+                    end
+                end
+                ax.Legend.Box = 'off';
                 ax.Legend.LineWidth = PS.save_small_DefaultLegendBoxLineWidth;
                 ax.Legend.AutoUpdate = 'off';
                 if (isfield(fig_comps, 'legendPosition'))
@@ -192,8 +242,14 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             for i = 1:length(axisChildren)
                 if isequal(axisChildren(i).Type, 'text')
                     axisChildren(i).FontName = PS.PlotTextFont;
+                    axisChildren(i).FontSize = PS.save_small_PlotTextFontSize;
                     % axisChildren(i).FontSize = PS.save_small_PlotTextFontSize;
-                    axisChildren(i).Interpreter = 'latex';
+                    if length(axisChildren(i).String) > 4
+                        if all(axisChildren(i).String([1, 2, end - 1, end]) == '$$$$')
+                            axisChildren(i).Interpreter = 'latex';
+                        end
+                    end
+                    
                 end
             end
 
@@ -248,17 +304,30 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             t1.Title.FontName = PS.TitleFont;
             t1.Title.FontSize = PS.Tiled.Global.save_big_TitleFontSize;
             t1.Title.FontWeight = 'bold';
-            t1.Title.Interpreter = 'latex';
+            if length(t1.Title.String) > 4
+                if all(t1.Title.String([1, 2, end - 1, end]) == '$$$$')
+                    t1.Title.Interpreter = 'latex';
+                end
+            end
 
             t1.XLabel.FontName = PS.AxisFont;
             t1.XLabel.FontSize = PS.Tiled.Global.save_big_AxisFontSize;
             t1.XLabel.FontWeight = 'bold';
-            t1.XLabel.Interpreter = 'latex';
+            if length(t1.XLabel.String) > 4
+                if all(t1.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    t1.XLabel.Interpreter = 'latex';
+                end
+            end
+
 
             t1.YLabel.FontName = PS.AxisFont;
             t1.YLabel.FontSize = PS.Tiled.Global.save_big_AxisFontSize;
             t1.YLabel.FontWeight = 'bold';
-            t1.YLabel.Interpreter = 'latex';
+            if length(t1.YLabel.String) > 4
+                if all(t1.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    t1.YLabel.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -288,9 +357,21 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 n_i.YLabel.FontWeight = 'bold';
                 n_i.ZLabel.FontWeight = 'bold';
 
-                n_i.XLabel.Interpreter = 'latex';
-                n_i.YLabel.Interpreter = 'latex';
-                n_i.ZLabel.Interpreter = 'latex';  
+                if length(n_i.XLabel.String) > 4
+                    if all(n_i.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.XLabel.Interpreter = 'latex';
+                    end
+                end
+                if length(n_i.YLabel.String) > 4
+                    if all(n_i.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.YLabel.Interpreter = 'latex';
+                    end
+                end
+                if length(n_i.ZLabel.String) > 4
+                    if all(n_i.ZLabel.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.ZLabel.Interpreter = 'latex';
+                    end
+                end 
                   
 
                 %========================================================
@@ -299,7 +380,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 n_i.Title.FontName = PS.TitleFont;
                 n_i.Title.FontSize = PS.Tiled.SubPlot.save_big_TitleFontSize;
                 n_i.Title.FontWeight = 'bold';
-                n_i.Title.Interpreter = 'latex';
+                if length(n_i.Title.String) > 4
+                    if all(n_i.Title.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.Title.Interpreter = 'latex';
+                    end
+                end
 
 
                 %========================================================
@@ -308,7 +393,14 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 if (numel(n_i.Legend) ~= 0)
                     n_i.Legend.FontName = PS.LegendFont;
                     n_i.Legend.FontSize = PS.Tiled.SubPlot.save_big_LegendFontSize;
-                    n_i.Legend.Interpreter = 'latex';
+                    for i_Legend = 1: length(n_i.Legend.String)
+                        if length(n_i.Legend.String{i_Legend}) > 4
+                            if all(n_i.Legend.String{i_Legend}([1, 2, end - 1, end]) == '$$$$')
+                                n_i.Legend.Interpreter = 'latex';
+                                break
+                            end
+                        end
+                    end
                     n_i.Legend.Box = 'on';
                     n_i.Legend.LineWidth = PS.Tiled.SubPlot.save_big_DefaultLegendBoxLineWidth;
                     n_i.Legend.AutoUpdate = 'off';
@@ -324,7 +416,12 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                     if isequal(axisChildren(j).Type, 'text')
                         axisChildren(j).FontName = PS.PlotTextFont;
                         % axisChildren(j).FontSize = PS.Tiled.SubPlot.save_big_PlotTextFontSize;
-                        axisChildren(j).Interpreter = 'latex';
+                        if length(axisChildren(j).String) > 4
+                            if all(axisChildren(j).String([1, 2, end - 1, end]) == '$$$$')
+                                axisChildren(j).Interpreter = 'latex';
+                            end
+                        end
+
                     end
                 end
 
@@ -376,17 +473,28 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
             t1.Title.FontName = PS.TitleFont;
             t1.Title.FontSize = PS.Tiled.Global.save_small_TitleFontSize;
             t1.Title.FontWeight = 'bold';
-            t1.Title.Interpreter = 'latex';
+            if length(t1.Title.String) > 4
+                if all(t1.Title.String([1, 2, end - 1, end]) == '$$$$')
+                    t1.Title.Interpreter = 'latex';
+                end
+            end
 
             t1.XLabel.FontName = PS.AxisFont;
             t1.XLabel.FontSize = PS.Tiled.Global.save_small_AxisFontSize;
             t1.XLabel.FontWeight = 'bold';
-            t1.XLabel.Interpreter = 'latex';
-
+            if length(t1.XLabel.String) > 4
+                if all(t1.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    t1.XLabel.Interpreter = 'latex';
+                end
+            end
             t1.YLabel.FontName = PS.AxisFont;
             t1.YLabel.FontSize = PS.Tiled.Global.save_small_AxisFontSize;
             t1.YLabel.FontWeight = 'bold';
-            t1.YLabel.Interpreter = 'latex';
+            if length(t1.YLabel.String) > 4
+                if all(t1.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    t1.YLabel.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -416,9 +524,21 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 n_i.YLabel.FontWeight = 'bold';
                 n_i.ZLabel.FontWeight = 'bold';
 
-                n_i.XLabel.Interpreter = 'latex';
-                n_i.YLabel.Interpreter = 'latex';
-                n_i.ZLabel.Interpreter = 'latex'; 
+                if length(n_i.XLabel.String) > 4
+                    if all(n_i.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.XLabel.Interpreter = 'latex';
+                    end
+                end
+                if length(n_i.YLabel.String) > 4
+                    if all(n_i.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.YLabel.Interpreter = 'latex';
+                    end
+                end
+                if length(n_i.ZLabel.String) > 4
+                    if all(n_i.ZLabel.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.ZLabel.Interpreter = 'latex';
+                    end
+                end
 
 
                 %========================================================
@@ -427,7 +547,11 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 n_i.Title.FontName = PS.TitleFont;
                 n_i.Title.FontSize = PS.Tiled.SubPlot.save_small_TitleFontSize;
                 n_i.Title.FontWeight = 'bold';
-                n_i.Title.Interpreter = 'latex';
+                if length(n_i.Title.String) > 4
+                    if all(n_i.Title.String([1, 2, end - 1, end]) == '$$$$')
+                        n_i.Title.Interpreter = 'latex';
+                    end
+                end
 
 
                 %========================================================
@@ -436,8 +560,15 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 if (numel(n_i.Legend) ~= 0)
                     n_i.Legend.FontName = PS.LegendFont;
                     n_i.Legend.FontSize = PS.Tiled.SubPlot.save_small_LegendFontSize;
-                    n_i.Legend.Interpreter = 'latex';
-                    n_i.Legend.Box = 'on';
+                    for i_Legend = 1: length(n_i.Legend.String)
+                        if length(n_i.Legend.String{i_Legend}) > 4
+                            if all(n_i.Legend.String{i_Legend}([1, 2, end - 1, end]) == '$$$$')
+                                n_i.Legend.Interpreter = 'latex';
+                                break
+                            end
+                        end
+                    end
+                    n_i.Legend.Box = 'off';
                     n_i.Legend.LineWidth = PS.Tiled.SubPlot.save_small_DefaultLegendBoxLineWidth;
                     n_i.Legend.AutoUpdate = 'off';
                     n_i.Legend.Location = PS.DefaultLegendLocation;
@@ -451,8 +582,14 @@ function saveme = SAVE_MY_FIGURE(fig_comps, fig_filename, save_format)
                 for j = 1:length(axisChildren)
                     if isequal(axisChildren(j).Type, 'text')
                         axisChildren(j).FontName = PS.PlotTextFont;
+                        axisChildren(j).FontSize = PS.Tiled.SubPlot.save_small_PlotTextFontSize;
                         % axisChildren(j).FontSize = PS.Tiled.SubPlot.save_small_PlotTextFontSize;
-                        axisChildren(j).Interpreter = 'latex';
+                        if length(axisChildren(j).String) > 4
+                            if all(axisChildren(j).String([1, 2, end - 1, end]) == '$$$$')
+                                axisChildren(j).Interpreter = 'latex';
+                            end
+                        end
+
                     end
                 end
 

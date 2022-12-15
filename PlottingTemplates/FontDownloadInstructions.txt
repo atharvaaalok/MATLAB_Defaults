@@ -1,0 +1,18 @@
+The toolbox uses Nunito as the font for plotting.
+
+To check if your matlab version has it installed run the following lines in your command window:
+>> d = listfonts
+
+If your system does not have the font then follow these simple steps to download/install it:
+1) Download from google fonts here: https://fonts.google.com/specimen/Nunito?query=nunito
+OR
+2) Use the fonts I have provided in the ColorsAndFonts/NunitoFonts folder
+Copy the provided .ttf files and save in the following location:
+C:\Program Files\MATLAB\R2022a\sys\java\jre\win64\jre\lib\fonts
+Then right click each file and choose open with "Windows Font Viewer". Then choose the install option available on the top.
+
+// This feature is under development:
+You can use any font for your figures. To do this simply download the corresponding .ttf files for that font and follow the steps as explained in 2).
+
+
+Re-run matlab and you are ready to go!!!

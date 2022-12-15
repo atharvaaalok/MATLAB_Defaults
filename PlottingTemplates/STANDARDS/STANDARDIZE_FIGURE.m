@@ -114,11 +114,12 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
             if isequal(axisChildren(i).Type, 'text')
                 axisChildren(i).FontName = PS.PlotTextFont;
                 axisChildren(i).FontSize = PS.PlotTextFontSize;
-                if length(ax.axisChildren(i).String) > 4
-                    if all(ax.axisChildren(i).String([1, 2, end - 1, end]) == '$$$$')
-                        ax.axisChildren(i).Interpreter = 'latex';
+                if length(axisChildren(i).String) > 4
+                    if all(axisChildren(i).String([1, 2, end - 1, end]) == '$$$$')
+                        axisChildren(i).Interpreter = 'latex';
                     end
                 end
+
             end
         end
 
@@ -170,17 +171,29 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
         t1.Title.FontName = PS.TitleFont;
         t1.Title.FontSize = PS.Tiled.Global.TitleFontSize;
         t1.Title.FontWeight = 'bold';
-        t1.Title.Interpreter = 'latex';
+        if length(t1.Title.String) > 4
+            if all(t1.Title.String([1, 2, end - 1, end]) == '$$$$')
+                t1.Title.Interpreter = 'latex';
+            end
+        end
 
         t1.XLabel.FontName = PS.AxisFont;
         t1.XLabel.FontSize = PS.Tiled.Global.AxisFontSize;
         t1.XLabel.FontWeight = 'bold';
-        t1.XLabel.Interpreter = 'latex';
+        if length(t1.XLabel.String) > 4
+            if all(t1.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                t1.XLabel.Interpreter = 'latex';
+            end
+        end
 
         t1.YLabel.FontName = PS.AxisFont;
         t1.YLabel.FontSize = PS.Tiled.Global.AxisFontSize;
         t1.YLabel.FontWeight = 'bold';
-        t1.YLabel.Interpreter = 'latex';
+        if length(t1.YLabel.String) > 4
+            if all(t1.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                t1.YLabel.Interpreter = 'latex';
+            end
+        end
 
 
         %========================================================
@@ -210,9 +223,21 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
             n_i.YLabel.FontWeight = 'bold';
             n_i.ZLabel.FontWeight = 'bold';
             
-            n_i.XLabel.Interpreter = 'latex';
-            n_i.YLabel.Interpreter = 'latex';
-            n_i.ZLabel.Interpreter = 'latex';  
+            if length(n_i.XLabel.String) > 4
+                if all(n_i.XLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    n_i.XLabel.Interpreter = 'latex';
+                end
+            end
+            if length(n_i.YLabel.String) > 4
+                if all(n_i.YLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    n_i.YLabel.Interpreter = 'latex';
+                end
+            end
+            if length(n_i.ZLabel.String) > 4
+                if all(n_i.ZLabel.String([1, 2, end - 1, end]) == '$$$$')
+                    n_i.ZLabel.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -221,7 +246,11 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
             n_i.Title.FontName = PS.TitleFont;
             n_i.Title.FontSize = PS.Tiled.SubPlot.TitleFontSize;
             n_i.Title.FontWeight = 'bold';
-            n_i.Title.Interpreter = 'latex';
+            if length(n_i.Title.String) > 4
+                if all(n_i.Title.String([1, 2, end - 1, end]) == '$$$$')
+                    n_i.Title.Interpreter = 'latex';
+                end
+            end
 
 
             %========================================================
@@ -230,7 +259,14 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
             if (numel(n_i.Legend) ~= 0)
                 n_i.Legend.FontName = PS.LegendFont;
                 n_i.Legend.FontSize = PS.Tiled.SubPlot.LegendFontSize;
-                n_i.Legend.Interpreter = 'latex';
+                for i_Legend = 1: length(n_i.Legend.String)
+                    if length(n_i.Legend.String{i_Legend}) > 4
+                        if all(n_i.Legend.String{i_Legend}([1, 2, end - 1, end]) == '$$$$')
+                            n_i.Legend.Interpreter = 'latex';
+                            break
+                        end
+                    end
+                end
                 n_i.Legend.Box = 'on';
                 n_i.Legend.LineWidth = PS.DefaultLegendBoxLineWidth;
                 n_i.Legend.AutoUpdate = 'off';
@@ -246,7 +282,12 @@ function figure = STANDARDIZE_FIGURE(fig_comps)
                 if isequal(axisChildren(j).Type, 'text')
                     axisChildren(j).FontName = PS.PlotTextFont;
                     axisChildren(j).FontSize = PS.Tiled.SubPlot.PlotTextFontSize;
-                    axisChildren(j).Interpreter = 'latex';
+                    if length(axisChildren(j).String) > 4
+                        if all(axisChildren(j).String([1, 2, end - 1, end]) == '$$$$')
+                            axisChildren(j).Interpreter = 'latex';
+                        end
+                    end
+                    
                 end
             end
 

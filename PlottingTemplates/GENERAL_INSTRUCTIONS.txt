@@ -1,0 +1,9 @@
+If you downloaded the Zip version from the internet then you need to follow these steps to add the toolbox files to path:
+
+Add this folder to path in MATLAB. To do this follow the given steps:
+Open MATLAB -> Home -> Set Path -> Add with Subfolders -> Choose the above folder 'PlottingTemplates'
+
+OR
+Go to Add-ons on Matlab and add directly through their. It will take care of adding it to path.
+
+You are ready to go!

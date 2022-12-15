@@ -79,7 +79,7 @@ fig1_comps.t1.YLabel.String = 'Tile Global Y Label';
 % NOTE: The default interpretor has been set to LaTeX so all LaTeX equations should work
 
 % Padding, Spacing and x-axis label removal
-t1.Padding = 'tight';
+fig1_comps.t1.Padding = 'tight';
 set(gca, 'yticklabel', []); % Removes yticklabels for the current axis. Use as in Tile 4 to remove for each individual tile.
 fig1_comps.t1.TileSpacing = 'none';
 

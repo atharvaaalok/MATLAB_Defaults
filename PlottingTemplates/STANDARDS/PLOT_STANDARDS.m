@@ -10,22 +10,35 @@ function PS = PLOT_STANDARDS()
     % FONTS
 
     % My STANDARD Font for Plots
-    % To check which fonts are available use - 
+    % To check which fonts are available use - d = listfonts
 
-    PS.DefaultFont = 'Nunito';
-    PS.AxisNumbersFontName = 'Nunito';
-    PS.AxisFont = 'Nunito';
-    PS.LegendFont = 'Nunito';
-    PS.TitleFont = 'Nunito';
-    PS.PlotTextFont = 'Nunito';
-    
-%     PS.DefaultFont = 'Yu Mincho';
-%     PS.AxisNumbersFontName = 'Yu Mincho';
-%     PS.AxisFont = 'Yu Mincho';
-%     PS.LegendFont = 'Yu Mincho';
-%     PS.TitleFont = 'Yu Mincho';
-%     PS.PlotTextFont = 'Yu Mincho';
+    d = listfonts;
 
+    if any(strcmp(d, 'Nunito'))
+        PS.DefaultFont = 'Nunito Light';
+        PS.AxisNumbersFontName = 'Nunito Light';
+        PS.AxisFont = 'Nunito Light';
+        PS.LegendFont = 'Nunito Light';
+        PS.TitleFont = 'Nunito Light';
+        PS.PlotTextFont = 'Nunito Light';
+    else
+        PS.DefaultFont = 'Yu Mincho';
+        PS.AxisNumbersFontName = 'Yu Mincho';
+        PS.AxisFont = 'Yu Mincho';
+        PS.LegendFont = 'Yu Mincho';
+        PS.TitleFont = 'Yu Mincho';
+        PS.PlotTextFont = 'Yu Mincho';
+    end
+
+    PS.DefaultFont = 'Yu Mincho';
+    PS.AxisNumbersFontName = 'Yu Mincho';
+    PS.AxisFont = 'Yu Mincho';
+    PS.LegendFont = 'Yu Mincho';
+    PS.TitleFont = 'Yu Mincho';
+    PS.PlotTextFont = 'Yu Mincho';
+
+
+    % Font size properties
     PS.TitleFontSize = 28;
     PS.LegendFontSize = 20;
     PS.AxisFontSize = 24;
@@ -34,14 +47,14 @@ function PS = PLOT_STANDARDS()
     
     
     % Tiled Properties
-    PS.Tiled.Global.TitleFontSize = 30;
-    PS.Tiled.Global.AxisFontSize = 26;
+    PS.Tiled.Global.TitleFontSize = 10;
+    PS.Tiled.Global.AxisFontSize = 10;
     
-    PS.Tiled.SubPlot.TitleFontSize = 26;
-    PS.Tiled.SubPlot.LegendFontSize = 18;
-    PS.Tiled.SubPlot.AxisFontSize = 22;
-    PS.Tiled.SubPlot.PlotTextFontSize = 18;
-    PS.Tiled.SubPlot.AxisNumbersFontSize = 16;
+    PS.Tiled.SubPlot.TitleFontSize = 20;
+    PS.Tiled.SubPlot.LegendFontSize = 9;
+    PS.Tiled.SubPlot.AxisFontSize = 9;
+    PS.Tiled.SubPlot.PlotTextFontSize = 9;
+    PS.Tiled.SubPlot.AxisNumbersFontSize = 9;
     
 
 
@@ -203,10 +216,10 @@ function PS = PLOT_STANDARDS()
 
     % Small
     PS.save_small_TitleFontSize = 15;
-    PS.save_small_LegendFontSize = 7;
-    PS.save_small_AxisFontSize = 11;
-    PS.save_small_PlotTextFontSize = 10;
-    PS.save_small_AxisNumbersFontSize = 10;
+    PS.save_small_LegendFontSize = 11;
+    PS.save_small_AxisFontSize = 13;
+    PS.save_small_PlotTextFontSize = 12;
+    PS.save_small_AxisNumbersFontSize = 14;
     PS.save_small_DefaultLineWidth = 1;
     PS.save_small_DefaultLegendBoxLineWidth = .7;
     
@@ -229,13 +242,13 @@ function PS = PLOT_STANDARDS()
 
     % Small
     PS.Tiled.Global.save_small_TitleFontSize = 20;
-    PS.Tiled.Global.save_small_AxisFontSize = 16;
+    PS.Tiled.Global.save_small_AxisFontSize = 12;
     
-    PS.Tiled.SubPlot.save_small_TitleFontSize = 10;
-    PS.Tiled.SubPlot.save_small_LegendFontSize = 6;
-    PS.Tiled.SubPlot.save_small_AxisFontSize = 8;
-    PS.Tiled.SubPlot.save_small_PlotTextFontSize = 6;
-    PS.Tiled.SubPlot.save_small_AxisNumbersFontSize = 6;
+    PS.Tiled.SubPlot.save_small_TitleFontSize = 12;
+    PS.Tiled.SubPlot.save_small_LegendFontSize = 12;
+    PS.Tiled.SubPlot.save_small_AxisFontSize = 12;
+    PS.Tiled.SubPlot.save_small_PlotTextFontSize = 12;
+    PS.Tiled.SubPlot.save_small_AxisNumbersFontSize = 12;
     
     PS.Tiled.SubPlot.save_small_DefaultLineWidth = 1;
     PS.Tiled.SubPlot.save_small_DefaultLegendBoxLineWidth = 1;
