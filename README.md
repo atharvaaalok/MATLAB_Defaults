@@ -5,4 +5,4 @@ Start by reading GENERAL_INSTRUCTIONS.txt
 
 Example Plot:
 
-![](PlottingTemplates/Figures/PlottingTemplate_Detailed_small.png)
+![](PlottingTemplates/Figures/ProfessionalPlots_Image.png)
